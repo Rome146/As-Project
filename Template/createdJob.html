@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+
+
+{% block body %}
+
+
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+#customers {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#customers td, #customers th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#customers tr:nth-child(even){background-color: #f2f2f2;}
+
+#customers tr:hover {background-color: #ddd;}
+
+#customers th {
+  padding-top: 50px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #04AA6D;
+  color: white;
+}
+</style>
+</head>
+<body>
+
+<h1>Those Jobs Created By Are {{request.user.username}} </h1>
+
+<table id="customers">
+  <tr>
+    <th>Title</th>
+    <th>Vecancy</th>
+    <th>Category</th>
+    <th>Skill</th>
+    <th>Action</th>
+  </tr>
+  
+  {% for i in job %}
+    
+  <tr>
+    <td>{{i.Title}}</td>
+    <td>{{i.vecancy}}</td>
+    <td>{{i.category}}</td>
+    <td>{{i.Skill}}</td>
+    <td>
+        <a href="{% url 'EditJob' i.id %}">EditJob</a>
+        <a href="{% url 'DeleteJob' i.id %}">Delete</a>
+        <a href="">View</a>
+    </td>
+
+    {% endfor %}
+</table>
+
+</body>
+</html>
+
+
+
+    
+{% endblock body %}
+    

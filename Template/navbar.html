@@ -1,0 +1,35 @@
+<nav>
+  <div class="nav-bar">
+      <i class='bx bx-menu sidebarOpen' ></i>
+      <span class="logo navLogo"><a href="#">CodingLab</a></span>
+
+      <div class="menu">
+          <div class="logo-toggle">
+              <span class="logo"><a href="#">CodingLab</a></span>
+              <i class='bx bx-x siderbarClose'></i>
+          </div>
+
+          <ul class="nav-links">
+              <li><a href="#">Home</a></li>
+
+              <li><a href="{% url "JobFeed" %}">Job Feed</a></li>
+              
+              <li><a href="{% url "profilePage" %}">Portfolio</a></li>
+              {% if request.user.user_type == 'seeker' %}
+
+              <li><a href="{% url "SkillMatchingPage" %}">SkillMatchingPage</a></li>
+
+              {% endif %}
+              
+              <li><a href="{% url "logoutPage" %}">Log Out</a></li>
+          </ul>
+      </div>
+      <form class="search-form" action=" {% url 'searchPage' %} " method="GET">
+        <input type="text" name="query" placeholder="Search...">
+        <button type="submit"><i class="bx bx-search"></i></button>
+      </form>
+              </div>
+          </div>
+      </div>
+  </div>
+</nav>
